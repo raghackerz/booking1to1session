@@ -1,3 +1,9 @@
+#Steps to install dependencies.
+
+- cd booking1to1session
+- npm i
+- npm start (to compile and run the app.)
+
 #Steps to make your component.
 
 - make a folder with name of your component inside src/components/.
