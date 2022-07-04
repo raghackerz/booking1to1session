@@ -19,42 +19,42 @@ const CompanyLogo = () => {
       <div>
         <h2>Get Mentored By Industry Veterans</h2>
       </div>
-      <div className="logoContainer">
-        <div className="column">
-          <div className="logo">
-            <img src={WALLMART} className="logoImage" alt="" />
+      <div className="companylogo__container">
+        <div className="companylogo__column">
+          <div className="companylogo__logo">
+            <img src={WALLMART} className="companylogo__logo-image" alt="" />
           </div>
         </div>
-        <div className="column">
-          <div className="logo">
-            <img src={AMAZON} className="logoImage" alt="" />
+        <div className="companylogo__column">
+          <div className="companylogo__logo">
+            <img src={AMAZON} className="companylogo__logo-image" alt="" />
           </div>
-          <div className="logo">
-            <img src={ZYNGA} className="logoImage" alt="" />
-          </div>
-        </div>
-        <div className="column">
-          <div className="logo">
-            <img src={GOOGLE} className="logoImage" alt="" />
-          </div>
-          <div className="logo">
-            <img src={FLIPKART} className="logoImage" alt="" />
-          </div>
-          <div className="logo">
-            <img src={OLA} className="logoImage" alt="" />
+          <div className="companylogo__logo">
+            <img src={ZYNGA} className="companylogo__logo-image" alt="" />
           </div>
         </div>
-        <div className="column">
-          <div className="logo">
-            <img src={MICROSOFT} className="logoImage" alt="" />
+        <div className="companylogo__column">
+          <div className="companylogo__logo">
+            <img src={GOOGLE} className="companylogo__logo-image" alt="" />
           </div>
-          <div className="logo">
-            <img src={RAZORPAY} className="logoImage" alt="" />
+          <div className="companylogo__logo">
+            <img src={FLIPKART} className="companylogo__logo-image" alt="" />
+          </div>
+          <div className="companylogo__logo">
+            <img src={OLA} className="companylogo__logo-image" alt="" />
           </div>
         </div>
-        <div className="column">
-          <div className="logo">
-            <img src={ADOBE} className="logoImage" alt="" />
+        <div className="companylogo__column">
+          <div className="companylogo__logo">
+            <img src={MICROSOFT} className="companylogo__logo-image" alt="" />
+          </div>
+          <div className="companylogo__logo">
+            <img src={RAZORPAY} className="companylogo__logo-image" alt="" />
+          </div>
+        </div>
+        <div className="companylogo__column">
+          <div className="companylogo__logo">
+            <img src={ADOBE} className="companylogo__logo-image" alt="" />
           </div>
         </div>
       </div>
