@@ -7,8 +7,8 @@ import Footer from '../../components/Footer';
 const Home = () => {
   return (
     <>
-    <CompanyLogo />
-    <Footer/>
+      <CompanyLogo />
+      <Footer />
     </>
   );
 }

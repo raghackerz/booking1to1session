@@ -15,7 +15,7 @@ import ADOBE from '../../assets/adobe.png';
 
 const CompanyLogo = () => {
   return (
-    <>
+    <div className="companylogo">
       <div>
         <h2>Get Mentored By Industry Veterans</h2>
       </div>
@@ -58,7 +58,7 @@ const CompanyLogo = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
