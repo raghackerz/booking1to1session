@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Layout from '../../components/Layout';
+import Navbar from '../../components/SignUpNavbar';
+import InitialSignup from '../../components/InitialSignup';
 
 const SignUp = () => {
+  const [users,setUsers] = useState([]);
   return (
-    <div>
-    </div>
+    <Layout>
+    <Navbar></Navbar>
+    <InitialSignup users={users} setUsers={setUsers}></InitialSignup>
+  </Layout>
   );
 }
 
