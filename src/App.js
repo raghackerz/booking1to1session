@@ -3,7 +3,7 @@ import React from 'react';
 //pages
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
-import SetPassword from './pages/SetPassword';
+import SignIn from './pages/SignIn';
 import BookingSession from './pages/BookingSession';
 
 //Routing
@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/setpassword" element={<SetPassword />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/book" element={<BookingSession />} />
       </Routes>
     </Router>
