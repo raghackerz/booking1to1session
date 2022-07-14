@@ -1,4 +1,4 @@
-import { SEARCH_MENTOR_URL, SIGN_IN_URL } from './config'
+import { SEARCH_MENTOR_URL, SIGN_IN_URL, EMAIL_CHECK_URL } from './config'
 const postConfig = {
   method: 'POST',
   headers: {
@@ -29,6 +29,16 @@ const apiSettings = {
       ...postConfig,
       body: JSON.stringify(bodyData),
     })).json();
+  },
+  checkEmailExists: async (email) => {
+    const bodyData = {
+      email: email,
+    }
+
+    return (await (await fetch(EMAIL_CHECK_URL, {
+      ...postConfig,
+      body: JSON.stringify(bodyData),
+    })).json()).exists;
   }
 };
 

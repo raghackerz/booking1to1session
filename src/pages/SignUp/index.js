@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import Layout from '../../components/Layout';
-import Navbar from '../../components/SignUpNavbar';
-import InitialSignup from '../../components/InitialSignup';
+import React/*, { useState }*/ from 'react';
+import SignUpComponent from '../../components/SignUpComponent';
+
+//hooks
+import { useSignUp } from '../../hooks/useSignUp'
 
 const SignUp = () => {
-  const [users,setUsers] = useState([]);
+  const { setEmail, setPassword, loading, error } = useSignUp();
   return (
-    <Layout>
-    <Navbar></Navbar>
-    <InitialSignup users={users} setUsers={setUsers}></InitialSignup>
-  </Layout>
+    <SignUpComponent setEmail={setEmail} />
   );
 }
 

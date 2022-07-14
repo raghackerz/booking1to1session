@@ -1,0 +1,78 @@
+.signup__container {
+  width: 100%;
+  height: 100vh;
+  background-color: #fafafb;
+}
+.signup__navbar {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.signup__navbar img {
+  width: 38px;
+  height: 42px;
+}
+.signup__navbar h2 {
+  margin-left: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444bab;
+}
+.signup__form {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  max-width: 500px;
+  min-height: 75vh;
+  margin-inline: auto;
+  padding: 2rem;
+}
+.signup__form h1 {
+  font-weight: 600;
+  font-size: 30px;
+}
+.signup__form label {
+  width: 100%;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: #737171;
+}
+.signup__email {
+  border: 2px solid #c4c4c4;
+  border-radius: 6px;
+  height: 3em;
+  width: 100%;
+}
+
+.signup__button {
+  background: linear-gradient(93.44deg, #444bab -6.8%, #3ca5c2 186.94%);
+  width: 100%;
+  padding: 1em;
+  border-radius: 6px;
+  border: none;
+
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/*.google-login {
+  justify-content: center;
+  width: 100%;
+  border: 1.5px solid #444bab !important;
+}
+.google-login span {
+  font-size: 1.2rem;
+  color: #444bab;
+}
+.google-login div {
+  width: 100% !important;
+}*/
