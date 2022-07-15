@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import API from '../API'
 
 export const useMentorFetch = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");

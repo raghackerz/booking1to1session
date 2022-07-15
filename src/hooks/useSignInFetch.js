@@ -17,7 +17,7 @@ export const useSignInFetch = () => {
         setLoading(true);
         setError(false);
         const token = await API.signIn(email, password);
-        localStorage.authorization = `Bearer ${token.accessToken}`;
+        localStorage.authorization = token.accessToken;
       }
       catch {
         setError(true);
