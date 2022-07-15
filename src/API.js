@@ -1,9 +1,9 @@
-import { SEARCH_MENTOR_URL, SIGN_IN_URL, EMAIL_CHECK_URL, GOOGLE_LOGIN_URL } from './config'
+import { SEARCH_MENTOR_URL, SIGN_IN_URL, EMAIL_CHECK_URL, GOOGLE_LOGIN_URL, SIGN_UP_URL } from './config'
 const postConfig = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `${localStorage.authorization}`,
+    'Authorization': `Bearer ${localStorage.authorization}`,
   }
 }
 
@@ -46,6 +46,18 @@ const apiSettings = {
     }
 
     return (await (await fetch(GOOGLE_LOGIN_URL, {
+      ...postConfig,
+      body: JSON.stringify(bodyData),
+    })).json()).accessToken;
+  },
+  signUp: async (email, password, name) => {
+    const bodyData = {
+      email: email,
+      password: password,
+      name: name
+    }
+
+    return (await (await fetch(SIGN_UP_URL, {
       ...postConfig,
       body: JSON.stringify(bodyData),
     })).json()).accessToken;

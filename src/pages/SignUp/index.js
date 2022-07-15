@@ -7,7 +7,7 @@ import SignUpComponent from '../../components/SignUpComponent';
 import { useSignUp } from '../../hooks/useSignUp'
 
 const SignUp = () => {
-  const { email, emailExists, setGoogleLogin, setEmail, setPassword, loading, error } = useSignUp();
+  const { email, name, emailExists, setGoogleLogin, setEmail, setPassword, setName, loading, error } = useSignUp();
   if (loading) {
     return <div>Loading....</div>
   }
@@ -24,10 +24,10 @@ const SignUp = () => {
   return (
     <>
       {!email ?
-        <SignUpComponent setEmail={setEmail} setGoogleLogin={setGoogleLogin} />
+        <SignUpComponent setEmail={setEmail} setGoogleLogin={setGoogleLogin} setName={setName} />
         : !emailExists ?
           //show setPassword Component
-          <SignUpComponent setPassword={setPassword} />
+          <SignUpComponent setPassword={setPassword} setName={setName} name={name} />
           : null
       }
     </>

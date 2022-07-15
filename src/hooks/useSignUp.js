@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router'
 
 export const useSignUp = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -15,7 +16,7 @@ export const useSignUp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const verifyEmail = async () => {
+    const checkEmailExists = async () => {
       if (email === "") return;
 
       try {
@@ -39,24 +40,27 @@ export const useSignUp = () => {
       }
       setLoading(false);
     }
-    verifyEmail();
+    checkEmailExists();
   }, [email, googleLogin, navigate])
 
   useEffect(() => {
-    const verifyPassword = async () => {
-      if (password === "") return;
+    const postPassword = async () => {
+      if (password === "" || name === "") return;
       try {
         setError(false);
         setLoading(true);
+
+        const token = await API.signUp(email, password, name);
+        localStorage.authorization = token;
       }
       catch {
         setError(true);
       }
       setLoading(false);
     }
-    verifyPassword();
-  }, [password])
+    postPassword();
+  }, [email, name, password])
 
-  return { email, emailExists, setGoogleLogin, setEmail, setPassword, loading, error };
+  return { email, name, emailExists, setGoogleLogin, setEmail, setPassword, setName, loading, error };
 };
 
