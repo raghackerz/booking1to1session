@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 //import GoogleLogin from 'react-google-login';
 
 
-const GoogleLoginButton = ({ handleSuccess, handleFailure }) => {
+const GoogleLoginButton = ({ handleSuccess }) => {
   useEffect(() => {
     /* global google */
     const script = document.createElement("script");
@@ -11,7 +11,6 @@ const GoogleLoginButton = ({ handleSuccess, handleFailure }) => {
     script.async = true;
     script.defer = true;
     script.onload = () => {
-      console.log('jd');
       google.accounts.id.initialize({
         client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
         callback: handleSuccess,
@@ -23,7 +22,7 @@ const GoogleLoginButton = ({ handleSuccess, handleFailure }) => {
     }
 
     document.body.appendChild(script);
-  }, [])
+  }, [handleSuccess])
   return (
     <div
       className="google-login"

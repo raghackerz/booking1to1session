@@ -1,4 +1,4 @@
-import { SEARCH_MENTOR_URL, SIGN_IN_URL, EMAIL_CHECK_URL } from './config'
+import { SEARCH_MENTOR_URL, SIGN_IN_URL, EMAIL_CHECK_URL, GOOGLE_LOGIN_URL } from './config'
 const postConfig = {
   method: 'POST',
   headers: {
@@ -39,6 +39,16 @@ const apiSettings = {
       ...postConfig,
       body: JSON.stringify(bodyData),
     })).json()).exists;
+  },
+  googleLogin: async (email) => {
+    const bodyData = {
+      email: email,
+    }
+
+    return (await (await fetch(GOOGLE_LOGIN_URL, {
+      ...postConfig,
+      body: JSON.stringify(bodyData),
+    })).json()).accessToken;
   }
 };
 

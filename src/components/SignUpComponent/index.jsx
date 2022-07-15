@@ -9,20 +9,20 @@ import './SignUpComponent.css'
 //images
 import ppLogo from "../../assets/Signup/Group 4.png"
 
+//components
 import GoogleLoginButton from "../GoogleLogin";
 
-const SignUpComponent = ({ setEmail }) => {
+const SignUpComponent = ({ setEmail, setGoogleLogin }) => {
 
   const handleSubmit = (e) => {
-    console.log(process.env.REACT_CLIENT_GOOGLE_CLIENT_ID);
     e.preventDefault();
-    //console.log(e.target[0].value);
     setEmail(e.target[0].value)
   }
 
   const handleGoogleSuccess = (googleData) => {
-    console.log(process.env.REACT_CLIENT_GOOGLE_CLIENT_ID);
-    console.log(jwt_decode(googleData.credential));
+    const email = jwt_decode(googleData.credential).email;
+    setEmail(email);
+    setGoogleLogin(true);
   }
 
   return (

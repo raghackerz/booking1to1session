@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react'
 import API from '../API'
 
+//Navigation
+import { useNavigate } from 'react-router'
+
 export const useSignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [emailExists, setEmailExists] = useState(false);
+  const [googleLogin, setGoogleLogin] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const verifyEmail = async () => {
@@ -16,8 +22,17 @@ export const useSignUp = () => {
         setError(false);
         setLoading(true);
         const exists = await API.checkEmailExists(email);
-
-        setEmailExists(exists);
+        if (googleLogin && exists) {
+          const token = await API.googleLogin(email);
+          localStorage.authorization = token;
+          navigate('/');
+        }
+        else if (exists) {
+          navigate('/signin');
+        }
+        else {
+          setEmailExists(exists);
+        }
       }
       catch {
         setError(true);
@@ -25,7 +40,7 @@ export const useSignUp = () => {
       setLoading(false);
     }
     verifyEmail();
-  }, [email])
+  }, [email, googleLogin, navigate])
 
   useEffect(() => {
     const verifyPassword = async () => {
@@ -42,6 +57,6 @@ export const useSignUp = () => {
     verifyPassword();
   }, [password])
 
-  return { emailExists, setEmail, setPassword, loading, error };
+  return { email, emailExists, setGoogleLogin, setEmail, setPassword, loading, error };
 };
 
