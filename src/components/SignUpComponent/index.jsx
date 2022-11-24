@@ -1,34 +1,25 @@
 import React /*,{ useEffect, useState }*/ from "react";
 
-//utils
-import jwt_decode from 'jwt-decode'
-
-//Styles
-import './SignUpComponent.css'
-
-//images
-import PPLOGO from "../../assets/Signup/Group 4.png"
-
 //components
-import GoogleLoginButton from "../GoogleLogin";
+import Form from "../Form";
 
 const SignUpComponent = ({ setEmail, setGoogleLogin, setName }) => {
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEmail(e.target[0].value)
-  }
+    setEmail(e.target[0].value);
+  };
 
-  const handleGoogleSuccess = (googleData) => {
-    const googleObject = jwt_decode(googleData.credential);
-    console.log(googleObject)
-    setEmail(googleObject.email);
-    setName(googleObject.name);
-    setGoogleLogin(true);
-  }
+  const items = [
+    {
+      label: "Email",
+      id: "email",
+      type: "email",
+    },
+  ];
 
   return (
     <>
+      {/*
       <div className="signup__container">
         <div className="signup__navbar">
           <img className="" src={PPLOGO} alt="" />
@@ -45,8 +36,19 @@ const SignUpComponent = ({ setEmail, setGoogleLogin, setName }) => {
           <div className="">Already have an account?<a href="/">  Login</a></div>
         </form>
       </div>
+      */}
+      <Form
+        header="Sign Up"
+        items={items}
+        handleSubmit={handleSubmit}
+        googleLogin
+        setEmail={setEmail}
+        setName={setName}
+        setGoogleLogin={setGoogleLogin}
+        type="signup"
+      />
     </>
   );
-}
+};
 
 export default SignUpComponent;

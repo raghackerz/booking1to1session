@@ -1,0 +1,54 @@
+.mentor-card {
+  position: relative;
+  width: 90%;
+  margin-inline: auto;
+  background-color: #fff;
+  height: 558px;
+  font-size: 1rem;
+  padding: 0.7rem;
+}
+
+.mentor-card img {
+  width: 24px;
+  aspect-ratio: 1;
+}
+
+.mentor-card h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  display: inline-block;
+}
+
+.mentor-card button {
+  width: 90%;
+  margin-inline: auto;
+  border: 1.5px solid #444bab;
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.75em;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mentor-card__mentor-image img {
+  display: block;
+  margin-inline: auto;
+  width: 132px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.mentor-card__mentor-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1ch;
+}
+
+.mentor-card__details {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888888;
+}

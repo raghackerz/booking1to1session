@@ -1,13 +1,24 @@
-import { useEffect, useState } from 'react';
-import API from '../API'
+import { useEffect, useState } from "react";
+import API from "../API";
+
+//hooks
+import { useGoogleLogin } from "./useGoogleLogin";
+
+//navigation
+import { useNavigate } from "react-router-dom";
 
 export const useSignInFetch = () => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [name, setName] = useState("");
+  const [emailExists, setEmailExists] = useState(false);
+  const [googleLogin, setGoogleLogin] = useState(false);
 
+  const navigate = useNavigate();
+
+  useGoogleLogin({ email, setError, setLoading, googleLogin, setEmailExists });
 
   useEffect(() => {
     const fetchSignIn = async () => {
@@ -16,17 +27,31 @@ export const useSignInFetch = () => {
       try {
         setLoading(true);
         setError(false);
-        const token = await API.signIn(email, password);
-        localStorage.authorization = token.accessToken;
-      }
-      catch {
+        const { accessToken, name } = await API.signIn(email, password);
+        localStorage.authorization = accessToken;
+        localStorage.userName = name;
+        localStorage.email = email;
+      } catch {
         setError(true);
+      } finally {
+        setLoading(false);
+        setEmail("");
+        setPassword("");
+        if (localStorage.authorization) navigate("/");
       }
-      setLoading(false);
     };
 
     fetchSignIn();
-  }, [email, password])
+  }, [email, password, navigate]);
 
-  return { setEmail, setPassword, loading, error };
+  return {
+    setEmail,
+    setPassword,
+    loading,
+    error,
+    name,
+    setName,
+    emailExists,
+    setGoogleLogin,
+  };
 };

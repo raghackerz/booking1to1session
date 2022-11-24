@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import API from '../API'
+import { useEffect, useState } from "react";
+import API from "../API";
 
 export const useMentorFetch = () => {
   const [data, setData] = useState([]);
@@ -7,8 +7,8 @@ export const useMentorFetch = () => {
   const [error, setError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-
   useEffect(() => {
+    if (!searchTerm) return;
     const fetchMentor = async () => {
       try {
         setLoading(true);
@@ -16,15 +16,14 @@ export const useMentorFetch = () => {
 
         const data = await API.fetchMentors(searchTerm);
         setData(data);
-      }
-      catch {
+      } catch {
         setError(true);
       }
       setLoading(false);
-    }
+    };
 
     fetchMentor();
-  }, [searchTerm])
+  }, [searchTerm]);
 
   return { data, error, loading, setSearchTerm };
-}
+};

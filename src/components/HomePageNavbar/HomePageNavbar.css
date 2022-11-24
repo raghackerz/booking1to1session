@@ -1,6 +1,6 @@
 .nav-container {
   position: relative;
-  height: 3rem;
+  height: 4rem;
   background-color: #fff;
 }
 .nav {
@@ -17,14 +17,15 @@
   align-items: center;
   font-size: 1rem;
   line-height: 100%;
-  height: 3rem;
+  height: 100%;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.03);
-  gap: 2rem;
+  gap: 1.5rem;
   visibility: visible;
 }
 
 .logo {
   margin-left: 1rem;
+  height: 100%;
   display: flex;
   align-items: center;
   position: absolute;
@@ -32,16 +33,21 @@
   left: 0;
   gap: 0.5rem;
   color: #444bab;
+  cursor: pointer;
+}
+.nav :nth-child(1) {
+  /*margin-left: auto;*/
+  margin-left: auto;
 }
 .nav :nth-child(6) {
-  margin-left: auto;
+  /*margin-left: auto;*/
 }
 
 .nav li a {
   text-decoration: none;
 }
 #log {
-  padding: 0.75em 1.5em;
+  padding: 0.75em 2.5em;
   background-color: #fff;
   color: #444bab;
   border: 1px solid #444bab;
@@ -57,6 +63,25 @@
 .hamburger {
   position: fixed;
   visibility: hidden;
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  aspect-ratio: 1;
+  width: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav__name {
+  margin-right: 1rem;
+}
+#user-image {
+  width: 80%;
+  aspect-ratio: 1;
+  margin: 0;
 }
 @media (max-width: 1080px) {
   .nav {
@@ -86,5 +111,8 @@
     right: 3rem;
     width: 2rem;
     aspect-ratio: 1;
+  }
+  .nav :nth-child(1) {
+    margin: 0;
   }
 }

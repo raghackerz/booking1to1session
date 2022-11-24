@@ -30,6 +30,23 @@
   margin: auto;
 }
 
+.skill {
+  text-align: center;
+  margin-inline: 10vw;
+  margin-top: 20vh;
+}
+.skill h3 {
+  color: #4f516b;
+  font-size: 32px;
+}
+.skill p {
+  color: #505050;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+}
+
 @media (max-width: 1080px) {
   .companylogo {
     display: flex;

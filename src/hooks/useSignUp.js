@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import API from '../API'
+import { useState, useEffect } from "react";
+import API from "../API";
 
-//Navigation
-import { useNavigate } from 'react-router'
+//hooks
+import { useGoogleLogin } from "./useGoogleLogin";
 
 export const useSignUp = () => {
   const [email, setEmail] = useState("");
@@ -13,35 +13,7 @@ export const useSignUp = () => {
   const [emailExists, setEmailExists] = useState(false);
   const [googleLogin, setGoogleLogin] = useState(false);
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkEmailExists = async () => {
-      if (email === "") return;
-
-      try {
-        setError(false);
-        setLoading(true);
-        const exists = await API.checkEmailExists(email);
-        if (googleLogin && exists) {
-          const token = await API.googleLogin(email);
-          localStorage.authorization = token;
-          navigate('/');
-        }
-        else if (exists) {
-          navigate('/signin');
-        }
-        else {
-          setEmailExists(exists);
-        }
-      }
-      catch {
-        setError(true);
-      }
-      setLoading(false);
-    }
-    checkEmailExists();
-  }, [email, googleLogin, navigate])
+  useGoogleLogin({ email, setError, setLoading, googleLogin, setEmailExists });
 
   useEffect(() => {
     const postPassword = async () => {
@@ -52,15 +24,26 @@ export const useSignUp = () => {
 
         const token = await API.signUp(email, password, name);
         localStorage.authorization = token;
-      }
-      catch {
+        localStorage.userName = name;
+        localStorage.email = email;
+        //add navigation to homepage
+      } catch {
         setError(true);
       }
       setLoading(false);
-    }
+    };
     postPassword();
-  }, [email, name, password])
+  }, [email, name, password]);
 
-  return { email, name, emailExists, setGoogleLogin, setEmail, setPassword, setName, loading, error };
+  return {
+    email,
+    name,
+    emailExists,
+    setGoogleLogin,
+    setEmail,
+    setPassword,
+    setName,
+    loading,
+    error,
+  };
 };
-
